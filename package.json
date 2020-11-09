@@ -1,0 +1,11 @@
+{
+  "name": "02_framework_backend",
+  "version": "1.0.0",
+  "description": "Framework de backend El ejercicio consiste en implementar un framework que permita crear servidores HTTP en NodeJS.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
