@@ -8,24 +8,7 @@ const createServer = (requestHandler) => {
     socket.on("data", (data) => {
       buffer.push(data);
       console.log("data received", data.toString());
-      /*
-      if (!hasAllHeaders) {
-        return;
-      }*/
 
-      // content-length ?
-
-      /*   if (!isThereBody) {
-        // send response
-        return;
-      }*/
-
-      // ...
-
-      /*    if (!hasBody) {
-        return;
-      }
-*/
       const request = requestParser(data);
 
       // send response
@@ -35,10 +18,17 @@ const createServer = (requestHandler) => {
           const responseText = createHTTPResponse(
             statusCode,
             contentType,
-            body
+            body,
+            request.getHeader("Connection"),
+            request.getHeader("Host")
           );
+          console.log("ResponseText" + responseText);
           socket.write(responseText);
           socket.pipe(socket);
+
+          socket.end((err) => {
+            console.log(err);
+          });
         },
       };
 
