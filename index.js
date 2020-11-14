@@ -7,7 +7,7 @@ const get = (request, response) => {
   if (authorization == null) {
     response.send(
       "200",
-      { "Content-Type": "application/json" },
+      { "content-Type": "application/json" },
       JSON.stringify({
         authenticated: true,
         message: "Hello Authenticated User!",
@@ -26,8 +26,6 @@ const get = (request, response) => {
 };
 
 const requestListener = (request, response) => {
-  console.log("received request", request);
-
   switch (request.method) {
     case "GET": {
       return get(request, response);
@@ -58,4 +56,4 @@ const server = createServer((request, response) => {
   }
 });
 
-server.listen(3000);
+server.listen(8080);
